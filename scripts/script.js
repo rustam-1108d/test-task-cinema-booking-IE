@@ -147,24 +147,26 @@ document.addEventListener('DOMContentLoaded', function () {
       rowLabel.classList.add('row-label');
       rowDiv.appendChild(rowLabel);
       for (var j = 0; j < cols; j += 1) {
-        var seatDiv = document.createElement('div');
-        seatDiv.textContent = (j + 1).toString();
-        var isBooked = bookings[key] && bookings[key].indexOf((i + 1) + '-' + (j + 1)) !== -1;
-        seatDiv.classList.add(isBooked ? 'booked' : 'available');
+        (function (i, j) {
+          var seatDiv = document.createElement('div');
+          seatDiv.textContent = (j + 1).toString();
+          var isBooked = bookings[key] && bookings[key].indexOf((i + 1) + '-' + (j + 1)) !== -1;
+          seatDiv.classList.add(isBooked ? 'booked' : 'available');
 
-        if (isPastSession) {
-          seatDiv.classList.add(isBooked ? 'archived-booked' : 'archived-available');
-        } else {
-          seatDiv.addEventListener('click', function () {
-            if (seatDiv.classList.contains('booked')) {
-              showCancellationModal(date, time, i + 1, j + 1, seatDiv);
-            } else {
-              showConfirmationModal(date, time, i + 1, j + 1, seatDiv);
-            }
-          });
-        }
+          if (isPastSession) {
+            seatDiv.classList.add(isBooked ? 'archived-booked' : 'archived-available');
+          } else {
+            seatDiv.addEventListener('click', function () {
+              if (seatDiv.classList.contains('booked')) {
+                showCancellationModal(date, time, i + 1, j + 1, seatDiv);
+              } else {
+                showConfirmationModal(date, time, i + 1, j + 1, seatDiv);
+              }
+            });
+          }
 
-        rowDiv.appendChild(seatDiv);
+          rowDiv.appendChild(seatDiv);
+        })(i, j);
       }
       seatsDiv.appendChild(rowDiv);
     }
