@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кинотеатр Хекслет 3D</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <h2 id="logo">Кинотеатр Хекслет 3D<h2>
+    <h1>"Учебная практика"</h1>
+    <p id="genre">фантастика, приключения, триллер, драма, комедия, хоррор</p>
+    <div id="date-container">
+        <h2>Выберите дату</h2>
+        <select id="date-select"></select>
+    </div>
+    <div id="session-container">
+        <h2>Сеансы</h2>
+        <div id="sessions"></div>
+    </div>
+    <div id="seats-container">
+        <h2>Места</h2>
+        <div id="seats"></div>
+    </div>
+
+    <!-- Модальное окно для подтверждения или отмены бронирования -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="modal-text"></p>
+            <button id="confirm-btn">Подтвердить</button>
+            <button id="cancel-btn">Назад</button>
+        </div>
+    </div>
+
+    <script src="scripts/script.js"></script>
+</body>
+</html>
